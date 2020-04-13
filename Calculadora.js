@@ -1,5 +1,5 @@
 function sum(Num1,Num2){
-    Num1+Num2
+    return Num1+Num2;
 }
 
 function sub(num1, num2){
