@@ -1,0 +1,137 @@
+    1  dir
+    2  cd C:\users\arthur_qf7f61o\Desktop
+    3  cd..
+    4  cd ..
+    5  dir
+    6  C:
+    7  cd C:
+    8  dir
+    9  cd Users
+   10  cd arthu_qf7f61o\Desktop\ofertas
+   11  git init
+   12  heroku create ofertas-pi2
+   13  heroku run php artisan migrate
+   14  heroku run php artisan migrate
+   15  heroku run php artisan migrate
+   16  heroku run php artisan migrate
+   17  heroku run php artisan storage:link
+   18  heroku run php artisan migrate
+   19  heroku run php artisan migrate
+   20  heroku run php artisan migrate
+   21  heroku run php artisan migrate
+   22  heroku run php artisan migrate
+   23  heroku config:set APP_KEY=base64:WVs81mPEikDmb6J1utWfXQPJD2pEeNdXbpNwnMUKbWA=
+   24  #!/bin/bash
+   25  trap '[ "$?" -eq 0 ] || read -p "Looks like something went wrong in step ´$STEP´... Press any key to continue..."' EXIT
+   26  #Quick Hack: used to convert e.g. "C:\Program Files\Docker Toolbox" to "/c/Program Files/Docker Toolbox"
+   27  win_to_unix_path(){  	wd="$(pwd)"; 	cd "$1"; 		the_path="$(pwd)"; 	cd "$wd"; 	echo $the_path; }
+   28  # This is needed  to ensure that binaries provided
+   29  # by Docker Toolbox over-ride binaries provided by
+   30  # Docker for Windows when launching using the Quickstart.
+   31  export PATH="$(win_to_unix_path "${DOCKER_TOOLBOX_INSTALL_PATH}"):$PATH"
+   32  VM=${DOCKER_MACHINE_NAME-default}
+   33  DOCKER_MACHINE="${DOCKER_TOOLBOX_INSTALL_PATH}\docker-machine.exe"
+   34  STEP="Looking for vboxmanage.exe"
+   35  if [ ! -z "$VBOX_MSI_INSTALL_PATH" ]; then   VBOXMANAGE="${VBOX_MSI_INSTALL_PATH}VBoxManage.exe"; else   VBOXMANAGE="${VBOX_INSTALL_PATH}VBoxManage.exe"; fi
+   36  BLUE='\033[1;34m'
+   37  GREEN='\033[0;32m'
+   38  NC='\033[0m'
+   39  #clear all_proxy if not socks address
+   40  if  [[ $ALL_PROXY != socks* ]]; then   unset ALL_PROXY; fi
+   41  if  [[ $all_proxy != socks* ]]; then   unset all_proxy; fi
+   42  if [ ! -f "${DOCKER_MACHINE}" ]; then   echo "Docker Machine is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi
+   43  if [ ! -f "${VBOXMANAGE}" ]; then   echo "VirtualBox is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi
+   44  "${VBOXMANAGE}" list vms | grep \""${VM}"\" &> /dev/null
+   45  VM_EXISTS_CODE=$?
+   46  set -e
+   47  STEP="Checking if machine $VM exists"
+   48  if [ $VM_EXISTS_CODE -eq 1 ]; then   "${DOCKER_MACHINE}" rm -f "${VM}" &> /dev/null || :;   rm -rf ~/.docker/machine/machines/"${VM}"   if [ "${HTTP_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTP_PROXY=$HTTP_PROXY";   fi;   if [ "${HTTPS_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTPS_PROXY=$HTTPS_PROXY";   fi;   if [ "${NO_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY=$NO_PROXY";   fi;   "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV "${VM}"; fi
+   49  STEP="Checking status on $VM"
+   50  VM_STATUS="$( set +e ; "${DOCKER_MACHINE}" status "${VM}" )"
+   51  if [ "${VM_STATUS}" != "Running" ]; then   "${DOCKER_MACHINE}" start "${VM}";   yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"; fi
+   52  STEP="Setting env"
+   53  eval "$("${DOCKER_MACHINE}" env --shell=bash --no-proxy "${VM}" | sed -e "s/export/SETX/g" | sed -e "s/=/ /g")" &> /dev/null #for persistent Environment Variables, available in next sessions
+   54  eval "$("${DOCKER_MACHINE}" env --shell=bash --no-proxy "${VM}")" #for transient Environment Variables, available in current session
+   55  STEP="Finalize"
+   56  clear
+   57  cat << EOF
+   58                          ##         .
+   59                    ## ## ##        ==
+   60                 ## ## ## ## ##    ===
+   61             /"""""""""""""""""\___/ ===
+   62        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+   63             \______ o           __/
+   64               \    \         __/
+   65                \____\_______/
+   66  EOF
+   67  echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$("${DOCKER_MACHINE}" ip ${VM})${NC}"
+   68  echo "For help getting started, check out the docs at https://docs.docker.com"
+   69  echo
+   70  echo 
+   71  #cd #Bad: working dir should be whatever directory was invoked from rather than fixed to the Home folder
+   72  docker () {   MSYS_NO_PATHCONV=1 docker.exe "$@"; }
+   73  export -f docker
+   74  if [ $# -eq 0 ]; then   echo "Start interactive shell";   exec "$BASH" --login -i; else   echo "Start shell with command";   exec "$BASH" -c "$*"; fi
+   75  #!/bin/bash
+   76  trap '[ "$?" -eq 0 ] || read -p "Looks like something went wrong in step ´$STEP´... Press any key to continue..."' EXIT
+   77  #Quick Hack: used to convert e.g. "C:\Program Files\Docker Toolbox" to "/c/Program Files/Docker Toolbox"
+   78  win_to_unix_path(){  	wd="$(pwd)"; 	cd "$1"; 		the_path="$(pwd)"; 	cd "$wd"; 	echo $the_path; }
+   79  # This is needed  to ensure that binaries provided
+   80  # by Docker Toolbox over-ride binaries provided by
+   81  # Docker for Windows when launching using the Quickstart.
+   82  export PATH="$(win_to_unix_path "${DOCKER_TOOLBOX_INSTALL_PATH}"):$PATH"
+   83  VM=${DOCKER_MACHINE_NAME-default}
+   84  DOCKER_MACHINE="${DOCKER_TOOLBOX_INSTALL_PATH}\docker-machine.exe"
+   85  STEP="Looking for vboxmanage.exe"
+   86  if [ ! -z "$VBOX_MSI_INSTALL_PATH" ]; then   VBOXMANAGE="${VBOX_MSI_INSTALL_PATH}VBoxManage.exe"; else   VBOXMANAGE="${VBOX_INSTALL_PATH}VBoxManage.exe"; fi
+   87  BLUE='\033[1;34m'
+   88  GREEN='\033[0;32m'
+   89  NC='\033[0m'
+   90  #clear all_proxy if not socks address
+   91  if  [[ $ALL_PROXY != socks* ]]; then   unset ALL_PROXY; fi
+   92  if  [[ $all_proxy != socks* ]]; then   unset all_proxy; fi
+   93  if [ ! -f "${DOCKER_MACHINE}" ]; then   echo "Docker Machine is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi
+   94  if [ ! -f "${VBOXMANAGE}" ]; then   echo "VirtualBox is not installed. Please re-run the Toolbox Installer and try again.";   exit 1; fi
+   95  "${VBOXMANAGE}" list vms | grep \""${VM}"\" &> /dev/null
+   96  VM_EXISTS_CODE=$?
+   97  set -e
+   98  STEP="Checking if machine $VM exists"
+   99  if [ $VM_EXISTS_CODE -eq 1 ]; then   "${DOCKER_MACHINE}" rm -f "${VM}" &> /dev/null || :;   rm -rf ~/.docker/machine/machines/"${VM}"   if [ "${HTTP_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTP_PROXY=$HTTP_PROXY";   fi;   if [ "${HTTPS_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env HTTPS_PROXY=$HTTPS_PROXY";   fi;   if [ "${NO_PROXY}" ]; then     PROXY_ENV="$PROXY_ENV --engine-env NO_PROXY=$NO_PROXY";   fi;   "${DOCKER_MACHINE}" create -d virtualbox $PROXY_ENV "${VM}"; fi
+  100  STEP="Checking status on $VM"
+  101  VM_STATUS="$( set +e ; "${DOCKER_MACHINE}" status "${VM}" )"
+  102  if [ "${VM_STATUS}" != "Running" ]; then   "${DOCKER_MACHINE}" start "${VM}";   yes | "${DOCKER_MACHINE}" regenerate-certs "${VM}"; fi
+  103  STEP="Setting env"
+  104  eval "$("${DOCKER_MACHINE}" env --shell=bash --no-proxy "${VM}" | sed -e "s/export/SETX/g" | sed -e "s/=/ /g")" &> /dev/null #for persistent Environment Variables, available in next sessions
+  105  eval "$("${DOCKER_MACHINE}" env --shell=bash --no-proxy "${VM}")" #for transient Environment Variables, available in current session
+  106  STEP="Finalize"
+  107  clear
+  108  cat << EOF
+  109                          ##         .
+  110                    ## ## ##        ==
+  111                 ## ## ## ## ##    ===
+  112             /"""""""""""""""""\___/ ===
+  113        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+  114             \______ o           __/
+  115               \    \         __/
+  116                \____\_______/
+  117  EOF
+  118  echo -e "${BLUE}docker${NC} is configured to use the ${GREEN}${VM}${NC} machine with IP ${GREEN}$("${DOCKER_MACHINE}" ip ${VM})${NC}"
+  119  echo "For help getting started, check out the docs at https://docs.docker.com"
+  120  echo
+  121  echo 
+  122  #cd #Bad: working dir should be whatever directory was invoked from rather than fixed to the Home folder
+  123  docker () {   MSYS_NO_PATHCONV=1 docker.exe "$@"; }
+  124  export -f docker
+  125  if [ $# -eq 0 ]; then   echo "Start interactive shell";   exec "$BASH" --login -i; else   echo "Start shell with command";   exec "$BASH" -c "$*"; fi
+  126  git checkout -b feature/mult
+  127  git push origin feature/mult
+  128  git branch
+  129  npm i -g gitmoji-cli
+  130  gitmoji -c
+  131  git history
+  132  git log
+  133  git add .
+  134  gitmoji -c
+  135  git push origin feature/mult
+  136  history
+  137  history > LOG_ArthurGraña

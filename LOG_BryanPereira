@@ -1,0 +1,124 @@
+    1  mkdir EngII
+    2  cd C:Programfiles
+    3  cd EngII
+    4  git init
+    5  git status
+    6  git add .
+    7  git commit -m "primeira file"
+    8  git congi --global user.email "bryanpriebe@hotmail.com"
+    9  git config --global user.email "bryanpriebe@hotmail.com"
+   10  git config --global user.name "Bryan Pereira"
+   11  git commit -m "primeira file"
+   12  ssh-keygen -t rsa -b 4096 -C "bryanpriebe@hotmail.com"
+   13  cat ~/.ssh/id_rsa.pub
+   14  git add .
+   15  git commit -m "Adiciona o app"
+   16  git remote add origin git@gitlab.com:MisterTurtle/remototeste.git
+   17  git remote
+   18  git remote show origin
+   19  git push origin --all
+   20  git add .
+   21  git commig -m "atualiza o aplicativo"
+   22  git commit -m "atualiza o aplicativo"
+   23  git push
+   24  git push -u origin --all
+   25  git push
+   26  git reset HEAD~1 --hard
+   27  git push
+   28  git push -f
+   29  git add .
+   30  git push -f
+   31  git push -f
+   32  git reflog
+   33  git cherry-pick a315e38 
+   34  git cherry-pick --skip
+   35  git remote show origin
+   36  git add .
+   37  git commit -m "Adiciona log"
+   38  git push
+   39  git pull
+   40  git commit -m "Adiciona log"
+   41  git push
+   42  cdcd Projeto-TIG
+   43  cd 
+   44  cd Projeto-TIG
+   45  cd
+   46  cd C\
+   47  cd C:
+   48  cd Projeto-TIG
+   49  cd Projeto-TIG
+   50  cd
+   51  cd Projeto-TIG
+   52  cd Desktop
+   53  cd ~/Desktop
+   54  cd
+   55  cd Projeto-TIG
+   56  Projeto-TIG
+   57  cd C\
+   58  CD C:\
+   59  cd C:
+   60  cd Projeto-TIG
+   61  cd ProjetoTIG
+   62  git checkout master
+   63  cd TIG-etseT
+   64  code .
+   65  git status
+   66  git add .
+   67  gitmoji -i
+   68  git commit 
+   69  git status
+   70  git push origin feature/sum
+   71  cd
+   72  cd ProjetoTIG
+   73  cd c:
+   74  cd ProjetoTIG
+   75  git remote show origin
+   76  cd TIG-etseT
+   77  git remote show origin
+   78  cd ProjetoTIG
+   79  cd ProjetoTIG
+   80  cd
+   81  cd c:
+   82  cd ProjetoTIG
+   83  git checkout master
+   84  git clone https://github.com/BryanTurtle/Projeto-TIG-etseT
+   85  git remote show origin
+   86  cd ProjetoTIG
+   87  git remote show origin
+   88  git checkout -b feature/sum
+   89  code .
+   90  gitmoji -i
+   91  git status
+   92  git add.
+   93  git add 
+   94  git add .
+   95  git log
+   96  git commit
+   97  git push origin feature/sum
+   98  git checkout master
+   99  git checkout -b feature/div
+  100  git status
+  101  git status
+  102  git add .
+  103  git commit
+  104  git push origin feature/div
+  105  code .
+  106  git checkout master
+  107  git checkout -b fix/sumr
+  108  code .
+  109  git pull origin master
+  110  git pull origin master
+  111  git status
+  112  git add .
+  113  git status
+  114  git add .
+  115  git commit
+  116  cd
+  117  cd c:
+  118  cd ProjetoTIG
+  119  git commit
+  120  git commit
+  121  git commit
+  122  history
+  123  git push origin fix/sumr
+  124  history > LOG_BryanPereira
