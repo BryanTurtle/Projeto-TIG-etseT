@@ -1,5 +1,5 @@
-function sum(){
-    //TODO: Implementar soma
+function sum(Num1,Num2){
+    Num1+Num2
 }
 
 function sub(){
