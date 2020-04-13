@@ -1,0 +1,26 @@
+    1  gitmoji -i
+    2  git commit
+    3  gitmoji -i
+    4  git commit
+    5  git add .
+    6  gitmoji -c
+    7  git status
+    8  git remote show origin
+    9  git push origin feature/sub
+   10  git add .
+   11  gitmoji -c
+   12  gitmoji -i
+   13  git status
+   14  git commit
+   15  gitmoji -c
+   16  npm i -g gitmoji-cli
+   17  npm install inquirer@5.0.0
+   18  git commit -m :sparkles: Introduzido codigo de subtração da calculadora
+   19  git commit -m ':sparkles: Introduzido codigo de subtração da calculadora'
+   20  gitmoji help
+   21  gitmoji -r -i
+   22  gitmoji -r
+   23  git commit -m ':sparkles: Introduzido codigo de subtração da calculadora'
+   24  git push origin feature/sub
+   25  history
+   26  history > LOG_LucasManke
