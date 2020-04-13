@@ -10,6 +10,6 @@ function mult(){
     //TODO: Implementar multiplicação
 }
 
-function div(){
-    //TODO: Implementar divisão
+function div(Num1,Num2){
+    Num1/Num2
 }
