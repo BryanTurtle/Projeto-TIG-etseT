@@ -11,5 +11,7 @@ function mult(){
 }
 
 function div(Num1,Num2){
-    Num1/Num2
+
+return Num1/Num2;
+
 }
